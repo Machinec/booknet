@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "vant-button" : "/lib/vant-weapp/dist/button/index"
+  }
 }
