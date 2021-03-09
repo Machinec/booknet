@@ -1,7 +1,13 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/book/book",
+    "pages/content/content",
+    "pages/message/message",
+    "pages/release/release",
+    "pages/mine/mine",
+    "pages/history/history"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -10,5 +16,36 @@
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  
+  "tabBar": {
+    "custom": true,
+    "color": "#515151",
+    "selectedColor": "#d81e06",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  
+  "usingComponents": {
+    "van-tabbar": "/lib/vant-weapp/dist/tabbar/index",
+    "van-tabbar-item": "/lib/vant-weapp/dist/tabbar-item/index",
+    "van-icom": "/lib/vant-weapp/dist/icon/index"
+  }
 }
