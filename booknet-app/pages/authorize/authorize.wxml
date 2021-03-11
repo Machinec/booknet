@@ -1,0 +1,15 @@
+<!--pages/authorize/authorize.wxml-->
+<van-row>
+  <van-col class="image_position">
+    <van-image
+    width="100"
+    height="100"
+    src="/image/unlogin.png"
+    />
+  </van-col>
+  
+</van-row>
+<van-row><van-col class="button_position">
+    <van-button open-type="getUserInfo" type="info" size="small" bindgetuserinfo="login" >立即登录</van-button>
+</van-col></van-row>
+<van-dialog id="van-dialog"/>

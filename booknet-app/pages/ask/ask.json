@@ -4,6 +4,9 @@
     "van-search" : "/lib/vant-weapp/dist/search/index",
     "van-card" : "/lib/vant-weapp/dist/card/index",
     "van-panel": "/lib/vant-weapp/dist/panel/index",
-    "van-tag": "/lib/vant-weapp/dist/tag/index"
+    "van-tag": "/lib/vant-weapp/dist/tag/index",
+    "van-image": "/lib/vant-weapp/dist/image/index",
+    "van-row": "/lib/vant-weapp/dist/row/index",
+    "van-col": "/lib/vant-weapp/dist/col/index"
   }
 }

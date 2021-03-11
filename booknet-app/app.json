@@ -8,7 +8,8 @@
     "pages/release/release",
     "pages/mine/mine",
     "pages/history/history",
-    "pages/ask/ask"
+    "pages/ask/ask",
+    "pages/authorize/authorize"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -50,6 +51,7 @@
   "usingComponents": {
     "van-tabbar": "/lib/vant-weapp/dist/tabbar/index",
     "van-tabbar-item": "/lib/vant-weapp/dist/tabbar-item/index",
-    "van-icon": "/lib/vant-weapp/dist/icon/index"
+    "van-icon": "/lib/vant-weapp/dist/icon/index",
+    "van-dialog": "/lib/vant-weapp/dist/dialog/index"
   }
 }
