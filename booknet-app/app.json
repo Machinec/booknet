@@ -7,13 +7,14 @@
     "pages/message/message",
     "pages/release/release",
     "pages/mine/mine",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/ask/ask"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#1989fa",
+    "navigationBarTitleText": "书虫爬爬",
+    "navigationBarTextStyle":"white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -39,6 +40,9 @@
       {
         "pagePath": "pages/mine/mine",
         "text": "我的"
+      },{
+        "pagePath": "pages/ask/ask",
+        "text": "书贴"
       }
     ]
   },
@@ -46,6 +50,6 @@
   "usingComponents": {
     "van-tabbar": "/lib/vant-weapp/dist/tabbar/index",
     "van-tabbar-item": "/lib/vant-weapp/dist/tabbar-item/index",
-    "van-icom": "/lib/vant-weapp/dist/icon/index"
+    "van-icon": "/lib/vant-weapp/dist/icon/index"
   }
 }

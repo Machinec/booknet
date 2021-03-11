@@ -1,16 +1,23 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <view>
-    <vant-button type = "primary">按钮测试</vant-button>
-  </view>
+
+<van-search
+  value="{{ value }}"
+  shape="round"
+  background="#1989fa"
+  placeholder="请输入搜索书名"
+  bind:search="onSearch"
+  class="search-class"
+/>
+
+<view style="height:54px"></view>
+
+<view wx:for="{{ book_list }}" wx:key="index">
+  <van-card
+    price="{{item.price}}"
+    desc="{{item.desc}}"
+    title="{{item.title}}"
+    thumb="{{item.imageURL}}"
+  />  
 </view>
+
+<view style="height:50px"></view>

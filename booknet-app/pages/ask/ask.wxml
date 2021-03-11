@@ -1,0 +1,31 @@
+<!--pages/ask/ask.wxml-->
+<!-- <text>pages/ask/ask.wxml</text> -->
+<van-search
+  value="{{ value }}"
+  shape="round"
+  background="#1989fa"
+  placeholder="请输入搜索内容"
+  bind:search="onSearch"
+  class="search-class"
+/>
+
+<view style="height:54px"></view>
+
+<view wx:for="{{ask_list}}" wx:key="index">
+  <van-panel title="{{item.title}}" status="{{item.auther}}" use-footer-slot>
+    <view style="font-size:12px; color:#646566">{{item.desc}}</view>
+    <view slot="footer">
+      <view style="display:flex; flex-direction:row;">
+        <van-icon name="clock-o" color="#1989fa"></van-icon>
+        <text style="font-size:12px; color:#646566">{{item.time}}</text>
+        <text style="display:inline-block; width:20px"></text>
+        <van-icon name="eye-o" color="#1989fa"></van-icon>
+        <text style="font-size:12px; color:#646566">{{item.read}}</text>
+      </view>
+      <!-- <van-tag round size="medium" type="primary">{{item.time}}</van-tag> -->
+    </view>
+  </van-panel>
+  <!-- 加入脚标：阅读数,发布时间 -->
+</view>
+
+<view style="height:50px"></view>

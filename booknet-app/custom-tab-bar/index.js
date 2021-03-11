@@ -22,8 +22,13 @@ Component({
         "text" : "首页"
       },
       {
+        "url" : "/pages/ask/ask",
+        "icon" : "coupon-o",
+        "text" : "书贴"
+      },
+      {
         "url" : "/pages/release/release",
-        "icon" : "add-o",
+        "icon" : "add",
         "text" : "发布"
       },
       {

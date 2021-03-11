@@ -1,5 +1,5 @@
 /**index.wxss**/
-.userinfo {
+/* .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +18,10 @@
 
 .usermotto {
   margin-top: 200px;
+} */
+.search-class{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
