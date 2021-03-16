@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      avatar_url: "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoaWS5nSxdN3X9rTMclPXYK3jgrGl2ae9PaibLXWpstXw7Siaia1BvZ5Ix2IibaDdyUkVOficyh2cZFPOw/132"
+    }
   },
 
   /**

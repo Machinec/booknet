@@ -78,15 +78,15 @@ Page({
       },
       fail: (err) => {
         // console.log("拒绝授权")
-        // Dialog.confirm({
-        //   message: '书虫爬爬为校园内部交流平台，在进入之前我们获取您的授权确认身份，为此带来的不便请您体谅！',
-        // })
-        wx.showToast({
-          title: '书虫爬爬为校园内部交流平台，在进入之前我们获取您的授权确认身份，为此带来的不便请您体谅！',
-          icon: 'none',
-          duration: 5000,
-          mask: true
+        Dialog.alert({
+          message: '书虫爬爬为校园内部交流平台，在进入之前我们获取您的授权确认身份，为此带来的不便请您体谅！',
         })
+        // wx.showToast({
+        //   title: '书虫爬爬为校园内部交流平台，在进入之前我们获取您的授权确认身份，为此带来的不便请您体谅！',
+        //   icon: 'none',
+        //   duration: 5000,
+        //   mask: true
+        // })
       }
     })
   }

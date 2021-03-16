@@ -1,2 +1,94 @@
 <!--pages/release/release.wxml-->
-<text>pages/release/release.wxml</text>
+<!-- <text>pages/release/release.wxml</text> -->
+
+<view>
+  <van-tabs color="#1989fa" active="{{active_tab}}" bind:change="tabOnChange">
+    <van-tab title="转让贴">
+      <view style="height:10px"></view>
+      <!-- <van-row>
+        <van-col offset="19">
+          <van-button type="info" custom-style="height:26px; width:64px">发布</van-button>
+        </van-col>
+      </van-row> -->
+      <van-cell-group>
+        <van-field
+          value="{{ book_pub.name }}"
+          label="书名"
+          placeholder="请输入书名"
+          error-message="{{book_pub_errors.name}}"
+          border="{{ false }}"
+          required
+          bind:change="onChangeBookName"
+        />
+        <van-field
+          value="{{ book_pub.price }}"
+          label="售价"
+          placeholder="请输入价格，免费转赠可填写0"
+          type="number"
+          error-message="{{book_pub_errors.price}}"
+          border="{{ false }}"
+          required
+          bind:change="onChangeBookPrice"
+        />
+        <van-field
+          value="{{ book_pub.desc }}"
+          label="内容"
+          type="textarea"
+          placeholder="请输入书籍相关信息"
+          autosize
+          error-message="{{book_pub_errors.desc}}"
+          border="{{ false }}"
+          required
+          bind:change="onChangeBookDesc"
+        />
+      </van-cell-group>
+      <!-- 文件上传完毕后会触发after-read回调函数，获取到对应的文件的临时地址，然后再使用wx.uploadFile将图片上传到远程服务器上 -->
+      <view style="height:10px"></view>
+      <van-uploader
+        style="margin-left:16px;"
+        upload-text="请上传书籍图片"
+        preview-size="160px"
+        file-list="{{ images }}"
+        max-count="1"
+        deletable="{{ true }}"
+        bind:after-read="afterRead"
+        bind:delete="deleteImage"
+      />
+      <van-button round size="normal" type="info" bind:click="bookPubSubmit">发布</van-button>
+    </van-tab>
+
+
+    <van-tab title="求书贴">
+      <view style="height:10px"></view>
+      <!-- <van-row>
+        <van-col offset="19">
+          <van-button type="info" custom-style="height:26px; width:64px">发布</van-button>
+        </van-col>
+      </van-row> -->
+        <van-cell-group>
+          <van-field
+            value="{{ ask_pub.name }}"
+            label="书名"
+            placeholder="请输入您需要的书籍"
+            error-message="{{ask_pub_errors.name}}"
+            border="{{ false }}"
+            required
+            bind:change="onChangeAskName"
+          />
+          <van-field
+            value="{{ ask_pub.desc }}"
+            label="内容"
+            type="textarea"
+            autosize
+            error-message="{{ask_pub_errors.desc}}"
+            border="{{ true }}"
+            required
+            bind:change="onChangeAskDesc"
+          />
+        </van-cell-group>
+      <view style="height:10px"></view>
+      <van-button round size="normal" type="info" bind:click="askPubSubmit">发布</van-button>
+    </van-tab>
+  </van-tabs>
+  <van-dialog id="van-dialog" />
+</view>

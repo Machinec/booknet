@@ -1,3 +1,12 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tab": "/lib/vant-weapp/dist/tab/index",
+    "van-tabs": "/lib/vant-weapp/dist/tabs/index",
+    "van-row": "/lib/vant-weapp/dist/row/index",
+    "van-col": "/lib/vant-weapp/dist/col/index",
+    "van-button": "/lib/vant-weapp/dist/button/index",
+    "van-uploader": "/lib/vant-weapp/dist/uploader/index",
+    "van-field": "/lib/vant-weapp/dist/field/index",
+    "van-dialog": "/lib/vant-weapp/dist/dialog/index"
+  }
 }

@@ -1,2 +1,31 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+
+<view style="height:20px"></view>
+<view>
+  <van-row>
+    <van-col offset="2" span="5">
+      <van-image
+      round
+      fit="cover"
+      width="5rem"
+      height="5rem"
+      src="{{userInfo.avatar_url}}"
+      />
+    </van-col>
+    <van-col span="7">
+      <view class='info'>
+        <view class='info-name'>河边的CC啊</view>
+        <view class='info-area'>华南师范大学</view>
+      </view>
+    </van-col>
+    <!-- <van-col offset="5" span="5">
+      <view class='user-box'>
+      <van-cell icon = "/image/info.png"  is-link url = "/pages/user/info/info"/>
+      </view>
+    </van-col> -->
+  </van-row>
+  <van-cell-group>
+  <van-cell icon = "/image/history.png" title="我的发布" is-link url = "/pages/history/history"/>
+  <van-cell icon = "/image/aboutus.png" title="关于我们" is-link url = ""/>
+  </van-cell-group>
+</view>

@@ -1,1 +1,37 @@
 /* pages/mine/mine.wxss */
+.info{
+  width:112px;
+  height:77px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.info .info-name{
+  font-family: Microsoft YaHei;
+  color:rgba(25, 25, 25, 1);
+  font-size: 16px;
+}
+.info .info-area{
+  font-family: Microsoft YaHei;
+  color:rgba(128, 128, 128, 1);
+  font-size: 14px;
+}
+.user-box{
+  /*background-color: red;*/
+  width:61px;
+  height:25px;
+  display: flex;
+  position: relative;
+  margin-top: 2.5rem;
+  margin-right: 0rem;
+}
+
+.van-icon__image {
+  height: 100%;
+  display: flex;
+
+}
