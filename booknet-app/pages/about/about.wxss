@@ -1,0 +1,17 @@
+/* pages/user/about/about.wxss */
+.image_position{
+  display:flex;                    
+ justify-content: center;     
+ margin-top: 100px;    
+}
+.text_box{
+  display:flex;            
+  justify-content: center;    
+}
+.text_style{
+  display:flex;     
+  margin-top: 20px;
+  font-size: smaller;
+  text-align: center;
+  color: gray;
+}

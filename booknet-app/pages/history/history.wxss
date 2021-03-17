@@ -1,1 +1,7 @@
 /* pages/history/history.wxss */
+van-button{
+  height: 22px !important;
+  /* background: #ee0a24;
+  border: solid,#ee0a24; */
+  width: 50px !important;
+}

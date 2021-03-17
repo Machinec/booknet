@@ -1,2 +1,69 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<!-- <text>pages/history/history.wxml</text> -->
+<view>
+  <van-tabs color="#1989fa" active="{{active_tab}}" bind:change="tabOnChange">
+    <van-tab title="转让贴">
+      <view style="height:10px"></view>
+      <view wx:for="{{ book_list }}" wx:key="index">
+        <van-card
+          price="{{item.price}}"
+          desc="{{item.desc}}"
+          title="{{item.title}}"
+          thumb="{{item.imageURL}}"
+        >
+          <view slot="footer">
+            <van-button type="danger" size="mini">删除</van-button>
+          </view>
+        </van-card>  
+      </view>
+    </van-tab>
+
+    <van-tab title="转让贴">
+      <view style="height:10px"></view>
+
+      <view wx:for="{{ask_list}}" wx:key="index">
+        <van-panel use-footer-slot>
+
+          <van-row slot="header">
+            <!-- 用户头像 -->
+            <van-col offset="1">
+              <van-image round width="2.5rem" height="2.5rem" src="{{item.avatarUrl}}" />
+            </van-col>
+
+            <van-col offset="1">
+              <!-- 用户名 -->
+              <van-row>
+                <van-col><text style="font-size:12px; color:#000">{{item.user}}</text></van-col>
+              </van-row>
+              <!-- 帖子相关书名 -->
+              <van-row>
+                <van-col><van-tag plain type="danger">{{item.book}}</van-tag></van-col>
+              </van-row>
+            </van-col>
+          </van-row>
+
+          <!-- 帖子内容 -->
+          <van-row>
+            <van-col offset="1" span="22">
+              <view style="font-size:12px; color:#646566">{{item.desc}}</view>
+            </van-col>
+          </van-row>
+
+          <!-- 展示发布时间，阅读数 -->
+          <view slot="footer">
+            <view style="display:flex; flex-direction:row;">
+              <van-icon name="clock-o" color="#1989fa"></van-icon>
+              <text style="font-size:12px; color:#646566">{{item.time}}</text>
+              <text style="display:inline-block; width:20px"></text>
+              <van-icon name="eye-o" color="#1989fa"></van-icon>
+              <text style="font-size:12px; color:#646566">{{item.read}}</text>
+              <text style="display:inline-block; width:180px"></text>
+              <van-button type="danger" size="mini">删除</van-button>
+            </view>
+          </view>
+        
+        </van-panel>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

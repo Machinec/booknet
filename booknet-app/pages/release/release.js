@@ -186,6 +186,7 @@ Page({
   },
 
   // 发布书籍转让贴按钮
+  // 书籍转让贴概要内容：如果desc字符数大于76则仅截取前73个字符加上后缀“...”
   bookPubSubmit: function(){
     console.log(this.data.book_pub)
     // 1.校验表单内容合法性
@@ -204,6 +205,7 @@ Page({
   },
 
   // 求书贴发布按钮
+  // 求书贴概要内容：如果desc字符数大于67则仅截取前64个字符加上后缀“...”
   askPubSubmit: function(){
     console.log(this.data.ask_pub)
     // 1.校验表单内容合法性

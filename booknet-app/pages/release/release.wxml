@@ -54,7 +54,7 @@
         bind:after-read="afterRead"
         bind:delete="deleteImage"
       />
-      <van-button round size="normal" type="info" bind:click="bookPubSubmit">发布</van-button>
+      <van-button round custom-style="width:184px;" type="info" bind:click="bookPubSubmit">发布</van-button>
     </van-tab>
 
 
@@ -87,7 +87,7 @@
           />
         </van-cell-group>
       <view style="height:10px"></view>
-      <van-button round size="normal" type="info" bind:click="askPubSubmit">发布</van-button>
+      <van-button round custom-style="width:184px;"  type="info" bind:click="askPubSubmit">发布</van-button>
     </van-tab>
   </van-tabs>
   <van-dialog id="van-dialog" />

@@ -26,6 +26,6 @@
   </van-row>
   <van-cell-group>
   <van-cell icon = "/image/history.png" title="我的发布" is-link url = "/pages/history/history"/>
-  <van-cell icon = "/image/aboutus.png" title="关于我们" is-link url = ""/>
+  <van-cell icon = "/image/aboutus.png" title="关于我们" is-link url = "/pages/about/about"/>
   </van-cell-group>
 </view>
