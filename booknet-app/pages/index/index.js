@@ -110,5 +110,13 @@ Page({
   //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
   //     }
   //   })
-  // }
+  // },
+ 
+  // 选中书籍条目跳转事件
+  selectBook: function(event){
+    let index = event.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: '/pages/book/book?index='+index,
+    })
+  }
 })

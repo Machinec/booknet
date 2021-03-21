@@ -27,13 +27,12 @@
 </view> -->
 <!-- https://tse1-mm.cn.bing.net/th/id/OET.b0835fdb04124319b21ff2c797de08db?w=272&h=272&c=7&rs=1&o=5&dpr=1.56&pid=1.9 -->
 
-<view wx:for="{{ask_list}}" wx:key="index">
-  <van-panel use-footer-slot>
+<view wx:for="{{ask_list}}" wx:key="index" wx:for-item="item" wx:for-index="index" data-index="{{index}}" bindtap="selectAsk">
 
-    <van-row slot="header">
+    <van-row >
       <!-- 用户头像 -->
       <van-col offset="1">
-        <van-image round width="2.5rem" height="2.5rem" src="{{item.avatarUrl}}" />
+        <van-image style="vertical-align:middle" round width="2.5rem" height="2.5rem" src="{{item.avatarUrl}}" />
       </van-col>
 
       <van-col offset="1">
@@ -56,17 +55,19 @@
     </van-row>
 
     <!-- 展示发布时间，阅读数 -->
-    <view slot="footer">
-      <view style="display:flex; flex-direction:row;">
-        <van-icon name="clock-o" color="#1989fa"></van-icon>
-        <text style="font-size:12px; color:#646566">{{item.time}}</text>
-        <text style="display:inline-block; width:20px"></text>
-        <van-icon name="eye-o" color="#1989fa"></van-icon>
-        <text style="font-size:12px; color:#646566">{{item.read}}</text>
-      </view>
-    </view>
-  </van-panel>
-  <view style="height:6px"></view>
+    <van-row>
+      <van-col offset="1">
+        <view style="display:flex; flex-direction:row;">
+          <van-icon style="vertical-align:middle" name="clock-o" color="#1989fa"></van-icon>
+          <text style="font-size:12px; color:#646566">{{item.time}}</text>
+          <text style="display:inline-block; width:20px"></text>
+          <van-icon style="vertical-align:middle" name="eye-o" color="#1989fa"></van-icon>
+          <text style="font-size:12px; color:#646566">{{item.read}}</text>
+        </view>
+      </van-col>
+    </van-row>
+
+  <view style="height:8px"></view>
 </view>
 
 <view style="height:50px"></view>

@@ -1,2 +1,64 @@
 <!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+<!-- <text>pages/book/book.wxml</text> -->
+<view>
+  <view style="height:10px"></view>
+  <van-row>
+    <van-col span="22" offset="1">
+      <van-image
+        src="{{content.imageURL}}"
+        radius="5px"
+        fit="contain"
+        height="180px"
+        width="100%"
+      />
+    </van-col>
+  </van-row>
+
+  <view style="height:10px"></view>
+  <van-row>
+    <van-col offset="1">
+      <van-tag plain type="danger">书名</van-tag>
+      <text>{{content.title}}</text>
+    </van-col>
+    <van-col style="display:flex; flex-direction:row;" offset="18">
+      <text style="color:red">￥{{content.price}}</text>
+    </van-col>
+  </van-row>
+
+  <view style="height:10px"></view>
+
+  <van-row>
+    <!-- 用户头像 -->
+    <van-col offset="1">
+      <van-image round width="2.5rem" height="2.5rem" src="{{content.avatarUrl}}" />
+    </van-col>
+
+    <van-col offset="1">
+      <!-- 用户名 -->
+      <van-row>
+        <van-col><text style="font-size:12px; color:#000">{{content.user}}</text></van-col>
+      </van-row>
+      <!-- 帖子时间 -->
+      <van-row>
+        <van-col>
+          <text style="font-size:12px; color:#646566">{{content.time}}</text>
+        </van-col>
+      </van-row>
+    </van-col>
+
+  </van-row>
+
+  <!-- 相关内容 -->
+  <van-row>
+    <van-col span="22" offset="1">
+      <text style="font-size:14px; color:#646566">{{content.desc}}</text>
+    </van-col>
+  </van-row>
+
+  <van-goods-action>
+    <van-goods-action-button type="info" text="立即联系" bind:click="#" />
+  </van-goods-action>
+
+</view>
+
+

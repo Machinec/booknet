@@ -11,7 +11,7 @@
 
 <view style="height:54px"></view>
 
-<view wx:for="{{ book_list }}" wx:key="index">
+<view wx:for="{{ book_list }}" wx:key="index" wx:for-item="item" wx:for-index="index" data-index="{{index}}" bindtap="selectBook">
   <van-card
     price="{{item.price}}"
     desc="{{item.desc}}"

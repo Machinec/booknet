@@ -1,3 +1,12 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-goods-action": "/lib/vant-weapp/dist/goods-action/index",
+    "van-goods-action-icon": "/lib/vant-weapp/dist/goods-action-icon/index",
+    "van-goods-action-button": "/lib/vant-weapp/dist/goods-action-button/index",
+    "van-row": "/lib/vant-weapp/dist/row/index",
+    "van-col": "/lib/vant-weapp/dist/col/index",
+    "van-icon": "/lib/vant-weapp/dist/icon/index",
+    "van-image": "/lib/vant-weapp/dist/image/index",
+    "van-tag": "/lib/vant-weapp/dist/tag/index"
+  }
 }

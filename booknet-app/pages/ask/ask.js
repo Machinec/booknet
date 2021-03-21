@@ -108,5 +108,13 @@ Page({
   onSearch: function(event){
     console.log(event.detail);
   },
+
+  // 选中求书贴跳转事件
+  selectAsk: function(event){
+    let index = event.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: '/pages/content/content?index='+index,
+    })
+  }
 })
 
