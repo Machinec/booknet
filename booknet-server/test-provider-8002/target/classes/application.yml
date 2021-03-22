@@ -1,16 +1,16 @@
 Server:
-  port: 8001
+  port: 8002
 mybatis:
   type-aliases-package: com.booknet.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
 spring:
   application:
-    name: test-provider
+    name: test-provider  # 相同的服务集群，服务名称必须一致
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource #数据源
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.100.10.67:3306/booknet?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false
+    url: jdbc:mysql://47.100.10.67:3306/booknet01?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false
     username: root
     password: qiaomao
     #druid 数据源专有配置
@@ -38,7 +38,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/ #向多个服务注册中心注册服务
   instance:
-    instance-id: instance-id test-provider-8001 #修改eureka Status描述信息
+    instance-id: instance-id test-provider-8002 #修改eureka Status描述信息
 
 #配置服务信息
 info:

@@ -2,14 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="test-provider-8002" />
         <module name="test-provider-8001" />
-        <module name="test-consumer" />
-        <module name="booknet-eureka-7001" />
         <module name="test-api" />
+        <module name="booknet-eureka-7002" />
+        <module name="booknet-eureka-7001" />
+        <module name="test-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

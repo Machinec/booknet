@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>test-provider-8001</artifactId>
-
+    <artifactId>test-provider-8002</artifactId>
     <dependencies>
         <!-- 配置test-api module，获取test实体类 -->
         <dependency>
@@ -69,6 +68,5 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>

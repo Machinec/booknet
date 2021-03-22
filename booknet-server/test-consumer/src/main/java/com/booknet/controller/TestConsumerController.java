@@ -22,7 +22,10 @@ public class TestConsumerController {
     @Autowired
     private RestTemplate restTemplate; // restful服务模板，提供多种访问远程http服务的模板
 
-    private static final String REST_URL_PREFIX = "http://localhost:8001";
+    //Ribbon 地址前缀应为服务名变量，通过注册中心的服务名来选中合适的主机访问某个服务，实现负载均衡
+    // Ribbon 与 Eureka 整合后RestTemplate可以使用注册中心微服务名称请求服务，不在关心ip地址和端口号
+//    private static final String REST_URL_PREFIX = "http://localhost:8001";
+    private static final String REST_URL_PREFIX = "http://TEST-PROVIDER";
 
     @RequestMapping("/consumer/test/get/{id}")
     public Test get(@PathVariable("id") int id){
