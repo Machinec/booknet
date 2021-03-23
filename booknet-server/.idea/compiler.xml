@@ -9,15 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="test-provider-8002" />
         <module name="test-provider-8001" />
-        <module name="test-provider-hystrix-8001" />
         <module name="test-api" />
+        <module name="booknet-consumer-hystrix-dashboard" />
         <module name="test-consumer" />
         <module name="booknet-eureka-7001" />
-        <module name="booknet-zuul-9527" />
         <module name="booknet-eureka-7002" />
-        <module name="booknet-config-server-3344" />
+        <module name="booknet-zuul-9527" />
+        <module name="test-provider-hystrix-8001" />
         <module name="test-consumer-feign" />
-        <module name="booknet-consumer-hystrix-dashboard" />
+        <module name="booknet-config-server-3344" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
