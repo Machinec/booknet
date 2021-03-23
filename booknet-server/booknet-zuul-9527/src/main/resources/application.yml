@@ -1,0 +1,23 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: booknet-zuul #微服务注册名
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/
+  instance:
+    instance-id: www.booknet.com
+    prefer-ip-address: true
+info:
+  app.name: booknet-zuul-gateway
+  company: jenson personal
+zuul:
+  routes:
+    mytest.serviceId: test-provider
+    mytest.path: /mytest/**
+  ignored-services: "*"  #隐藏全部的服务名访问
+  prefix: /booknet  #设置公共的前缀 http://www.booknet:9527/公共前缀/自定义path/controller mapping
+  #test访问：http://www.booknet.com:9527/booknet/mytest/test/get/2
+#  ignored-services: test-provider #不能再通过该服务名访问

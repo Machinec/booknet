@@ -14,6 +14,11 @@
         <module>booknet-eureka-7001</module>
         <module>booknet-eureka-7002</module>
         <module>test-provider-8002</module>
+        <module>test-provider-hystrix-8001</module>
+        <module>test-consumer-feign</module>
+        <module>booknet-consumer-hystrix-dashboard</module>
+        <module>booknet-zuul-9527</module>
+        <module>booknet-config-server-3344</module>
     </modules>
 
     <!--  打包方式 pom  -->
