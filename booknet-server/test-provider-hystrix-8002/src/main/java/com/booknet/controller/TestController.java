@@ -40,7 +40,7 @@ public class TestController {
 
     @GetMapping("/test/port")
     public String port(){
-        return "8001";
+        return "8002";
     }
 
     // 注册进来的微服务，获取一些消息

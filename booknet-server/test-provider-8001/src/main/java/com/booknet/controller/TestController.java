@@ -42,6 +42,8 @@ public class TestController {
         return testService.queryAll();
     }
 
+
+
     // 注册进来的微服务，获取一些消息
     @GetMapping("/test/discovery")
     public Object discovery(){

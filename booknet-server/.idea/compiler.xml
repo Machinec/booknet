@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="test-provider-8002" />
         <module name="test-provider-8001" />
+        <module name="test-provider-hystrix-8002" />
         <module name="test-api" />
         <module name="booknet-consumer-hystrix-dashboard" />
         <module name="test-consumer" />

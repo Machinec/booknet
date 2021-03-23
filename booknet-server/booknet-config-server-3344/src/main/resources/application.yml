@@ -10,3 +10,5 @@ spring:
       server:
         git:
           uri: https://github.com/Machinec/booknet.git
+          default-label: main  #github分支名
+          timeout: 100

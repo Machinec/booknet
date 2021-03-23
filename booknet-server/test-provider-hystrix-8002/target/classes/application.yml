@@ -1,5 +1,5 @@
 Server:
-  port: 8001
+  port: 8002
 mybatis:
   type-aliases-package: com.booknet.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
@@ -38,7 +38,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka/ #,http://localhost:7002/eureka/ 向多个服务注册中心注册服务
   instance:
-    instance-id: instance-id test-provider-hystrix-8001 #修改eureka Status描述信息
+    instance-id: instance-id test-provider-hystrix-8002 #修改eureka Status描述信息
     prefer-ip-address: true #显示服务ip，默认false显示域名
 
 #配置服务信息

@@ -6,7 +6,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 spring:
   application:
-    name: test-provider
+    name: test-provider # 相同的服务集群，服务名称必须一致
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource #数据源
     driver-class-name: com.mysql.jdbc.Driver
@@ -36,7 +36,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/ #向多个服务注册中心注册服务
+      defaultZone: http://localhost:7001/eureka/ #,http://localhost:7002/eureka/ 向多个服务注册中心注册服务
   instance:
     instance-id: instance-id test-provider-hystrix-8001 #修改eureka Status描述信息
     prefer-ip-address: true #显示服务ip，默认false显示域名
