@@ -48,6 +48,16 @@
 
   </van-row>
 
+<!-- 联系方式 -->
+  <van-row>
+    <van-col offset="1">
+      <van-tag plain type="primary">联系方式</van-tag>
+      <text style="font-size:14px; color:#646566">{{content.contact}}</text>
+    </van-col>
+  </van-row>
+
+  <view style="height:10px"></view>
+
   <!-- 相关内容 -->
   <van-row>
     <van-col span="22" offset="1">
@@ -55,9 +65,9 @@
     </van-col>
   </van-row>
 
-  <van-goods-action>
+  <!-- <van-goods-action>
     <van-goods-action-button type="info" text="立即联系" bind:click="#" />
-  </van-goods-action>
+  </van-goods-action> -->
 
 </view>
 

@@ -28,4 +28,7 @@ public interface TestClientService {
     @PostMapping("/test/add")
     public Boolean addTest(Test test);
 
+    @GetMapping("/test/port")
+    public String port();
+
 }

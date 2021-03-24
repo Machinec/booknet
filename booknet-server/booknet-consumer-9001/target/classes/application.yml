@@ -1,0 +1,28 @@
+server:
+  port: 9001
+
+#eureka:
+#  client:
+#    register-with-eureka: false  #不向注册中心注册自己
+#    service-url:
+#      defaultZone: http://localhost:7002/eureka/,http://localhost:7001/eureka/ #配置可访问集群，实现负载均衡
+feign:
+  hystrix:
+    enabled: true #开启feign.hystrix
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: booknet-consumer-9001
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: booknet-consumer
+
+#配置服务信息
+info:
+  app.name: booknet-consumer-9001
+  company.name: jenson personal

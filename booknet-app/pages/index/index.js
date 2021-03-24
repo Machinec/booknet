@@ -70,6 +70,17 @@ Page({
       })
     }
 
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          console.log("登录成功"+res.code)
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+
     // tabbar active设置
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {

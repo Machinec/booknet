@@ -20,6 +20,8 @@
         <module>booknet-zuul-9527</module>
         <module>booknet-config-server-3344</module>
         <module>test-provider-hystrix-8002</module>
+        <module>booknet-consumer-9001</module>
+        <module>login-provider-8100</module>
     </modules>
 
     <!--  打包方式 pom  -->

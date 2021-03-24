@@ -13,7 +13,8 @@ Page({
       imageURL: "https://img3.doubanio.com/lpic/s27964262.jpg",
       user:"河边的CC啊",
       time:"2021-01-01",
-      avatarUrl:"https://tse1-mm.cn.bing.net/th/id/OET.b0835fdb04124319b21ff2c797de08db?w=272&h=272&c=7&rs=1&o=5&dpr=1.56&pid=1.9"
+      avatarUrl:"https://tse1-mm.cn.bing.net/th/id/OET.b0835fdb04124319b21ff2c797de08db?w=272&h=272&c=7&rs=1&o=5&dpr=1.56&pid=1.9",
+      contact:"邮箱xxxxxxxx@163.com"
     }
   },
 

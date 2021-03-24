@@ -11,19 +11,23 @@ Page({
       name:'',
       price: 0,
       desc:'',
+      contact:'' //联系方式
     },
     ask_pub:{
       name:'',
-      desc:''
+      desc:'',
+      contact:'' //联系方式
     },
     book_pub_errors:{
       name:'',      // onChangeBookName
       price:'',     // onChangeBookPrice
-      desc:''       // onChangeBookDesc
+      desc:'',       // onChangeBookDesc
+      contact:'' // onChangeBookContact
     },
     ask_pub_errors:{
       name:'',      // onChangeAskName
-      desc:''       // onChangeAskDesc
+      desc:'',       // onChangeAskDesc
+      contact:'' // onChangeAskContact
     },
     images:[        // images 为图片上传数组对象
       /**
@@ -136,6 +140,15 @@ Page({
     }
   },
 
+  // 转让贴联系方式输入事件
+  onChangeBookContact: function(event){
+    if(event.detail == '' || typeof(event.detail) == 'undefined'){
+      this.setData({'book_pub_errors.contact':'联系方式不能为空'})
+    }else{
+      this.setData({'book_pub_errors.contact':'','book_pub.contact':event.detail})
+    }
+  },
+
   // 求书贴书名输入事件
   onChangeAskName: function(event){
     let name = event.detail.trim();
@@ -152,6 +165,15 @@ Page({
       this.setData({'ask_pub_errors.desc':'帖子不能为空'})
     }else{
       this.setData({'ask_pub_errors.desc':'','ask_pub.desc':event.detail})
+    }
+  },
+
+  // 求书贴联系方式输入事件
+  onChangeAskContact: function(event){
+    if(event.detail == '' || typeof(event.detail) == 'undefined'){
+      this.setData({'ask_pub_errors.contact':'联系方式不能为空'})
+    }else{
+      this.setData({'ask_pub_errors.contact':'','ask_pub.contact':event.detail})
     }
   },
 
@@ -200,6 +222,7 @@ Page({
       'book_pub.name':'',
       'book_pub.price':0,
       'book_pub.desc': '',
+      'book_pub.contact':'',
       images:[]
     })
   },
@@ -218,6 +241,7 @@ Page({
     this.setData({
       'ask_pub.name':'',
       'ask_pub.desc':'',
+      'ask_pub.contact':'',
     })
   }
 })

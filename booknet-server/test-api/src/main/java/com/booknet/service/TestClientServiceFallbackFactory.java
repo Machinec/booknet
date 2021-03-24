@@ -33,6 +33,11 @@ public class TestClientServiceFallbackFactory implements FallbackFactory {
             public Boolean addTest(Test test) {
                 return null;
             }
+
+            @Override
+            public String port() {
+                return null;
+            }
         };
     }
 

@@ -29,6 +29,14 @@
       </van-col>
     </van-row>
 
+    <!-- 联系方式 -->
+    <van-row>
+      <van-col offset="1">
+        <van-tag plain type="warning">联系方式</van-tag>
+        <text style="font-size:14px; color:#646566">{{content.contact}}</text>
+      </van-col>
+    </van-row>
+
   <!-- 帖子内容 -->
   <view style="height:10px"></view>
   <van-row>

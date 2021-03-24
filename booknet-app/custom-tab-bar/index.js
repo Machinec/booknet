@@ -28,14 +28,14 @@ Component({
       },
       {
         "url" : "/pages/release/release",
-        "icon" : "add",
+        "icon" : "add-o",
         "text" : "发布"
       },
-      {
-        "url" : "/pages/message/message",
-        "icon" : "chat-o",
-        "text" : "消息"
-      },
+      // {
+      //   "url" : "/pages/message/message",
+      //   "icon" : "chat-o",
+      //   "text" : "消息"
+      // },
       {
         "url" : "/pages/mine/mine",
         "icon" : "user-o",

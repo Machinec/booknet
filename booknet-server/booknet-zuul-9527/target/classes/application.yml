@@ -15,8 +15,8 @@ info:
   company: jenson personal
 zuul:
   routes:
-    mytest.serviceId: test-provider
-    mytest.path: /app/user/**    #    mytest.path: /mytest/**
+    mytest.serviceId: booknet-consumer #test-provider
+    mytest.path: /app/**    #    mytest.path: /mytest/**
   ignored-services: "*"  #隐藏全部的服务名访问
   prefix: /booknet  #设置公共的前缀 http://www.booknet:9527/公共前缀/自定义path/controller mapping
   #test访问：http://www.booknet.com:9527/booknet/mytest/test/get/2

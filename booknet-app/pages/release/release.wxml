@@ -41,6 +41,17 @@
           required
           bind:change="onChangeBookDesc"
         />
+        <van-field
+          value="{{ book_pub.contact }}"
+          label="联系方式"
+          type="textarea"
+          placeholder="请输入联系方式，微信，电话，邮箱等"
+          autosize
+          error-message="{{book_pub_errors.contact}}"
+          border="{{ false }}"
+          required
+          bind:change="onChangeBookContact"
+        />
       </van-cell-group>
       <!-- 文件上传完毕后会触发after-read回调函数，获取到对应的文件的临时地址，然后再使用wx.uploadFile将图片上传到远程服务器上 -->
       <view style="height:10px"></view>
@@ -81,9 +92,19 @@
             type="textarea"
             autosize
             error-message="{{ask_pub_errors.desc}}"
-            border="{{ true }}"
+            border="{{ false }}"
             required
             bind:change="onChangeAskDesc"
+          />
+          <van-field
+            value="{{ ask_pub.contact }}"
+            label="联系方式"
+            type="textarea"
+            autosize
+            error-message="{{ask_pub_errors.contact}}"
+            border="{{ true }}"
+            required
+            bind:change="onChangeAskContact"
           />
         </van-cell-group>
       <view style="height:10px"></view>
