@@ -15,8 +15,8 @@
         <module name="booknet-config-server-3344" />
         <module name="booknet-consumer-9001" />
         <module name="test-consumer" />
-        <module name="test-provider-hystrix-8002" />
         <module name="login-provider-8100" />
+        <module name="test-provider-hystrix-8002" />
         <module name="test-provider-hystrix-8001" />
         <module name="booknet-eureka-7002" />
         <module name="booknet-eureka-7001" />

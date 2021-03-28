@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "filter-ignore-url",
+      "type": "com.booknet.config.FilterIgnoreURL",
+      "sourceType": "com.booknet.config.FilterIgnoreURL"
+    }
+  ],
+  "properties": [
+    {
+      "name": "filter-ignore-url.urls",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.booknet.config.FilterIgnoreURL"
+    }
+  ],
+  "hints": []
+}

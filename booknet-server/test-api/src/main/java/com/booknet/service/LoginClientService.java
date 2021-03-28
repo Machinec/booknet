@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 /**
@@ -16,6 +17,7 @@ import java.util.HashMap;
 @FeignClient(value = "LOGIN-PROVIDER", fallbackFactory = LoginClientServiceFallbackFactory.class)
 public interface LoginClientService {
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public Object login(@RequestBody HashMap data);
+
 }

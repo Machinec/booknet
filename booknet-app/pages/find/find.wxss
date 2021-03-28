@@ -1,0 +1,11 @@
+/* pages/find/find.wxss */
+.search-class{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.item-border{
+  border-style: solid;
+  border-bottom-width: 1px;
+}

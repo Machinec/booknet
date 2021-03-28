@@ -1,48 +1,48 @@
 // index.js
 // 获取应用实例
 const app = getApp()
+const utils = require("../../utils/util")
 
 Page({
   data: {
     value : '',
     book_list:[
       {
-        price:2.00,
-
+        price:'8.00',
         desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。", 
         title:"平凡的世界",
         imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
       },
       {
-        price:"2.00",
+        price:"0.00",
         desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。",
         title:"平凡的世界",
-        imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
+        imageURL: 'https://bkimg.cdn.bcebos.com/pic/14ce36d3d539b600fbdea00ee950352ac65cb773?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5/format,f_auto',
       },
       {
-        price:"2.00",
-        desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。",
-        title:"平凡的世界",
-        imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
+        price:"0.00",
+        desc:"《活着》讲述一个人一生的故事，这是一个历尽世间沧桑和磨难老人的人生感言，是一幕演绎人生苦难经历的戏剧。。",
+        title:"活着",
+        imageURL: 'https://bkimg.cdn.bcebos.com/pic/09fa513d269759ee2ed8752cb2fb43166c22df48?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U4MA==,g_7,xp_5,yp_5/format,f_auto',
       },
       {
-        price:"2.00",
-        desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。",
-        title:"平凡的世界",
-        imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
+        price:"5.00",
+        desc:"《时间简史》是英国物理学家斯蒂芬·威廉·霍金创作的科普著作，首次出版于1988年。全书共十二章，讲述了关于宇宙本性的最前沿知识.",
+        title:"时间简史",
+        imageURL: 'https://bkimg.cdn.bcebos.com/pic/0bd162d9f2d3572c2b694f428d13632763d0c3a1?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U5Mg==,g_7,xp_5,yp_5/format,f_auto',
       },
       {
-        price:"2.00",
-        desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。",
-        title:"平凡的世界",
-        imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
+        price:"3.00",
+        desc:"《活着》讲述一个人一生的故事，这是一个历尽世间沧桑和磨难老人的人生感言，是一幕演绎人生苦难经历的戏剧。",
+        title:"活着",
+        imageURL: 'https://bkimg.cdn.bcebos.com/pic/09fa513d269759ee2ed8752cb2fb43166c22df48?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U4MA==,g_7,xp_5,yp_5/format,f_auto',
       },
       {
-        price:"2.00",
-        desc:"《平凡的世界》是中国作家路遥创作的一部全景式地表现中国当代城乡社会生活的百万字长篇小说。全书共三部。1986年12月首次出版。",
-        title:"平凡的世界",
-        imageURL: 'https://img3.doubanio.com/lpic/s27964262.jpg',
-      }
+        price:"6.00",
+        desc:"《时间简史》是英国物理学家斯蒂芬·威廉·霍金创作的科普著作，首次出版于1988年。全书共十二章，讲述了关于宇宙本性的最前沿知识.",
+        title:"时间简史",
+        imageURL: 'https://bkimg.cdn.bcebos.com/pic/0bd162d9f2d3572c2b694f428d13632763d0c3a1?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U5Mg==,g_7,xp_5,yp_5/format,f_auto',
+      },
     ],
   },
 
@@ -59,6 +59,32 @@ Page({
                 console.log("用户信息")
                 console.log(res)
                 app.globalData.userInfo = res.userInfo
+                // 登录状态查询
+                wx.getStorage({
+                  key: 'token',
+                  success: res => {
+                    if(typeof(res.data) == 'undefined' || res.data == ''){
+                      // this.login()
+                      utils.initLogin()
+                    }else{
+                      wx.checkSession({
+                        // session_key未过期
+                        success() {
+                          
+                        },
+                        // sesssion_key已过期
+                        fail(){
+                          // this.login()
+                          utils.initLogin()
+                        }
+                      })
+                    }
+                  },
+                  fail(){
+                    // this.login()
+                    utils.initLogin()
+                  }
+                })
               }
             })
           }else{
@@ -70,16 +96,6 @@ Page({
       })
     }
 
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-          console.log("登录成功"+res.code)
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
 
     // tabbar active设置
     if (typeof this.getTabBar === 'function' &&
@@ -93,6 +109,9 @@ Page({
   // 搜索框查找监听事件
   onSearch: function(event){
     console.log(event.detail);
+    wx.navigateTo({
+      url: '/pages/search/search?detail=' + event.detail,
+    })
   },
 
   // onLoad: function(){
@@ -129,5 +148,6 @@ Page({
     wx.navigateTo({
       url: '/pages/book/book?index='+index,
     })
-  }
+  },
+
 })

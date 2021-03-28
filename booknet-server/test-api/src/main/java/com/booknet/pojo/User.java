@@ -18,6 +18,6 @@ public class User {
     private String name;
     private String school;
     private String avatar;
-    private int status = 0;
+    private int status = 1; // 1为存在，0为注销
     private String field = "";
 }

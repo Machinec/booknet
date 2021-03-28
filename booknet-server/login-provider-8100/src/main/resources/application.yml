@@ -39,7 +39,7 @@ spring:
     database: 0
     host: 47.100.10.67
     port: 6379
-    password:
+    password: qiaomao
 
 eureka:
   client:

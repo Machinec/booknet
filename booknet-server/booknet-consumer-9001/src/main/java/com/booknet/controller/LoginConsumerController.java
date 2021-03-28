@@ -22,7 +22,7 @@ public class LoginConsumerController {
     @Autowired
     private LoginClientService service;
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public Object login(@RequestBody HashMap data){
 //        System.out.println("LoginConsumerController => /login hello");
 //        String code = (String) data.get("code");

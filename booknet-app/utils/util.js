@@ -88,25 +88,104 @@ const wxGetStorage = key => {
   return promise
 }
 
-// 封装 wx.getUserInfo
-const wxGetUserInfo = () =>{
-  let promise = new Promise(function(resolve,reject){
-    wx.getUserInfo({
-      success(res){
-        resolve(res)
-      },
-      fail(err){
-        reject(err)
-      }
-    })
+// 服务器返回登录过期后调用，res.data.code = 9527
+const login = () =>{
+  let app = getApp()
+  wx.showModal({
+    showCancel: false,
+    content: "请重新登录",
+    success (res){
+      wx.login({
+        success (res) {
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              url: 'http://www.booknet.com/app/user/login',
+              method: 'POST',
+              header: {
+                'content-type': 'application/json',
+              },
+              data:{
+                code: res.code,
+                user:{
+                    name:app.globalData.userInfo.nickName,
+                    school:"华南师范大学",
+                    avatar:app.globalData.userInfo.avatarUrl
+                }
+              },
+              success: res => {
+                console.log(res)
+                //保存token
+                wx.setStorage({
+                  data: token,
+                  key: res.data.data,
+                })
+                //跳转回首页
+                wx.navigateTo({
+                  url: '/pages/index/index',
+                })
+              },
+              fail: err =>{
+                console.log(err)
+              }
+            })
+          } else {
+            console.log(res.errMsg)
+          }
+        }
+      })
+    }
   })
-  return promise
+
 }
+
+// 初始index.js登录调用
+const initLogin = () =>{
+  let app = getApp()
+  wx.login({
+    success (res) {
+      if (res.code) {
+        //发起网络请求
+        wx.request({
+          url: 'http://www.booknet.com/app/user/login',
+          method: 'POST',
+          header: {
+            'content-type': 'application/json',
+          },
+          data:{
+            code: res.code,
+            user:{
+                name:app.globalData.userInfo.nickName,
+                school:"华南师范大学",
+                avatar:app.globalData.userInfo.avatarUrl
+            }
+          },
+          success: res => {
+            console.log(res)
+            //保存token
+            wx.setStorage({
+              data: res.data.data,
+              key: 'token',
+            })
+          },
+          fail: err =>{
+            console.log(err)
+          }
+        })
+      } else {
+        console.log(res.errMsg)
+      }
+    }
+  })
+
+}
+
 
 module.exports = {
   formatTime,
   wxRequestToken,
   wxRequest,
   wxGetStorage,
-  wxGetUserInfo
+  login,
+  initLogin
 }

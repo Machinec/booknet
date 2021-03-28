@@ -1,0 +1,13 @@
+<!--pages/search/search.wxml 首页搜索结果页面-->
+<!-- <text>pages/search/search.wxml</text> -->
+<view style="height:10px"></view>
+
+<view wx:for="{{ book_list }}" wx:key="index" wx:for-item="item" wx:for-index="index" data-index="{{index}}" bindtap="selectBook">
+  <van-card
+    price="{{item.price}}"
+    desc="{{item.desc}}"
+    title="{{item.title}}"
+    thumb="{{item.imageURL}}"
+  />  
+</view>
+

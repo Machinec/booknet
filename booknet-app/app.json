@@ -10,7 +10,9 @@
     "pages/history/history",
     "pages/ask/ask",
     "pages/authorize/authorize",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/search/search",
+    "pages/find/find"
   ],
   "window":{
     "backgroundTextStyle":"light",

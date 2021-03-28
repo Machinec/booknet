@@ -24,12 +24,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     @HystrixCommand(fallbackMethod = "loginException")
     public Object login(@RequestBody HashMap data){
         String code = (String) data.get("code");
         User user = JSON.parseObject(JSON.toJSONString(data.get("user")), User.class);
         String token = userService.login(code,user);
+        if (token == null){
+            return new ControllerReturn(400, "登录失败");
+        }
+        System.out.println("UserController token: " + token);
         return new ControllerReturn().setCode(200).setMessage("登录成功").setData(token);
     }
 

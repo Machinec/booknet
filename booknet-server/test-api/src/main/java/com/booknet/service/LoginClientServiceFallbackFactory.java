@@ -6,6 +6,7 @@ import com.booknet.utils.ControllerReturn;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 /**
@@ -23,7 +24,7 @@ public class LoginClientServiceFallbackFactory implements FallbackFactory {
             public Object login(HashMap data) {
                 String code = (String) data.get("code");
                 User user = JSON.parseObject(JSON.toJSONString(data.get("user")), User.class);
-                return new ControllerReturn(500, "/login无法访问，请稍后再试").setData(user);
+                return new ControllerReturn(500, "/user/login无法访问，请稍后再试").setData(user);
             }
         };
     }

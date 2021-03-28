@@ -24,8 +24,8 @@
         <van-icon style="vertical-align:middle" name="clock-o" color="#1989fa"></van-icon>
         <text style="font-size:12px; color:#646566">{{content.time}}</text>
         <text style="display:inline-block; width:20px"></text>
-        <van-icon style="vertical-align:middle" name="eye-o" color="#1989fa"></van-icon>
-        <text style="font-size:12px; color:#646566">{{content.read}}</text>
+        <!-- <van-icon style="vertical-align:middle" name="eye-o" color="#1989fa"></van-icon>
+        <text style="font-size:12px; color:#646566">{{content.read}}</text> -->
       </van-col>
     </van-row>
 
@@ -45,7 +45,7 @@
     </van-col>
   </van-row>
 
-  <van-goods-action>
+  <!-- <van-goods-action>
     <van-goods-action-button type="info" text="立即联系" bind:click="#" />
-  </van-goods-action>
+  </van-goods-action> -->
 </view>
