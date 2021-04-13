@@ -37,7 +37,7 @@ public class TestConsumerController {
 
     @RequestMapping("/test/add/{name}")
     public boolean add(@PathVariable("name") String name){
-        Test test = new Test(name);
+        Test test = new Test().setDesc(name);
 //        return restTemplate.postForObject(REST_URL_PREFIX+"/test/add", test, Boolean.class);
         return this.service.addTest(test);
     }

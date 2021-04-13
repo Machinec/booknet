@@ -36,12 +36,12 @@ public class TestConsumerController {
         return this.service.queryById(id);
     }
 
-    @RequestMapping("/test/add/{name}")
-    public boolean add(@PathVariable("name") String name){
-        Test test = new Test(name);
-//        return restTemplate.postForObject(REST_URL_PREFIX+"/test/add", test, Boolean.class);
-        return this.service.addTest(test);
-    }
+//    @RequestMapping("/test/add/{name}")
+//    public boolean add(@PathVariable("name") String name){
+//        Test test = new Test(name);
+////        return restTemplate.postForObject(REST_URL_PREFIX+"/test/add", test, Boolean.class);
+//        return this.service.addTest(test);
+//    }
 
     @RequestMapping("/test/list")
     public List<Test> list(){

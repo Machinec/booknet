@@ -21,7 +21,7 @@ public class TestClientServiceFallbackFactory implements FallbackFactory {
             public Test queryById(int id) {
                 return new Test()
                         .setId(id)
-                        .setName("没有对应信息，客户端提供降级信息，本服务已经关闭");
+                        .setDesc("没有对应信息，客户端提供降级信息，本服务已经关闭");
             }
 
             @Override

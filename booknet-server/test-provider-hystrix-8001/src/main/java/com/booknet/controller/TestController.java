@@ -68,6 +68,8 @@ public class TestController {
 
     // get备选方案
     public Test hystrixGet(int id){
-        return new Test().setId(id).setName("hystrixGet: " + "id=>" + id + " ,不存在该记录，或查询失败");
+        return new Test()
+                .setId(id)
+                .setDesc("hystrixGet: " + "id=>" + id + " ,不存在该记录，或查询失败");
     }
 }

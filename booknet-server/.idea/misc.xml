@@ -9,7 +9,9 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/publish-provider/pom.xml" />
         <option value="$PROJECT_DIR$/test-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/user-provider/pom.xml" />
       </set>
     </option>
   </component>

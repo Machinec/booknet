@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author zichang
@@ -16,9 +17,12 @@ import java.io.Serializable;
 @Accessors(chain = true) // 支持链式写法
 public class Test implements Serializable {
     private int id; // 主键
-    private String name;
-
-    public Test(String name){
-        this.name = name;
-    }
+    private String openid;
+    private String book;
+    private double price;
+    private Date time;
+    private String image;
+    private String desc;
+    private String detail;
+    private String contact;
 }

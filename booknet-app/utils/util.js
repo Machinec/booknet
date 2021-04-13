@@ -142,6 +142,7 @@ const login = () =>{
 // 初始index.js登录调用
 const initLogin = () =>{
   let app = getApp()
+  let school_name = "华南师范大学"
   wx.login({
     success (res) {
       if (res.code) {
@@ -156,7 +157,7 @@ const initLogin = () =>{
             code: res.code,
             user:{
                 name:app.globalData.userInfo.nickName,
-                school:"华南师范大学",
+                school:school_name,
                 avatar:app.globalData.userInfo.avatarUrl
             }
           },

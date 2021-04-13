@@ -56,12 +56,9 @@ public class BooknetFilter extends ZuulFilter {
         // 获取请求
         RequestContext context = RequestContext.getCurrentContext();
         HttpServletRequest request = context.getRequest();
-
         // 判断是否是白名单的url
         String requestUrl = request.getRequestURL().toString();
         // 判断url是否再 FilterIgnoreURL.urls白名单内
-//        System.out.println("filter拦截url => " + requestUrl);
-//        System.out.println("yml白名单 => " + FilterIgnoreURL.urls.toString());
         for (String url :
                 FilterIgnoreURL.urls) {
             // 请求为白名单内的url，不做拦截处理
@@ -69,17 +66,9 @@ public class BooknetFilter extends ZuulFilter {
                 return null;
             }
         }
-        /**
-         从请求头中获取token
-         客户端调用请求头格式：
-         header: {
-         'content-type': 'application/json', // 默认值
-         'Authorization': 'Bearer ' + token
-         },
-         **/
+        //从请求头中获取token
         String token = request.getHeader(REQUEST_AUTH_HEADER);
         token = token.split(" ")[1];
-
         // token验证失败
         if (token == null || !JWTUtil.verifyToken(token, SECRET_KEY)){
             // 终止转发，返回响应报文

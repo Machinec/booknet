@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -15,6 +16,9 @@ import java.util.Date;
 public class JWTUtil {
 
     public static final long EXPIRE_TIME = 60*60*24*7;//7天
+
+    // 请求头存放token字段
+    private static final String REQUEST_AUTH_HEADER="Authorization";
 
     /*
      * @Author zichang
@@ -30,7 +34,7 @@ public class JWTUtil {
         String token = JWT.create()
                 .withClaim("create_time", String.valueOf(createTime))
                 .withClaim("user_id", user_id)
-                .withExpiresAt(new Date(createTime + EXPIRE_TIME * 1000))  // 有效期7天
+                .withExpiresAt(new Date(createTime + EXPIRE_TIME * 1000))
                 .sign(algorithm);
 
         return token;
@@ -52,5 +56,13 @@ public class JWTUtil {
         }catch (Exception e){
             return false;
         }
+    }
+
+    public static String getUserId(HttpServletRequest request){
+        //从请求头中获取token
+        String token = request.getHeader(REQUEST_AUTH_HEADER);
+        token = token.split(" ")[1];
+        String user_id = JWT.decode(token).getClaim("user_id").asString();
+        return user_id;
     }
 }

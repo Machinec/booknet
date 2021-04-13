@@ -22,6 +22,9 @@
         <module>test-provider-hystrix-8002</module>
         <module>booknet-consumer-9001</module>
         <module>login-provider-8100</module>
+        <module>search-provider-8200</module>
+        <module>publish-provider-8300</module>
+        <module>user-provider-8400</module>
     </modules>
 
     <!--  打包方式 pom  -->

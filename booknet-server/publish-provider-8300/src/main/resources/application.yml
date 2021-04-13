@@ -1,0 +1,55 @@
+Server:
+  port: 8300
+mybatis:
+  type-aliases-package: com.booknet.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    cache-enabled: true
+    default-statement-timeout: 3000
+#  config-location: classpath:mybatis/mybatis-config.xml
+spring:
+  application:
+    name: publish-provider # 相同的服务集群，服务名称必须一致
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.100.10.67:3306/booknet?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false
+    username: root
+    password: qiaomao
+    #druid 数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    #    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: false
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    database: 0
+    host: 47.100.10.67
+    port: 6379
+    password: qiaomao
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/ #,http://localhost:7002/eureka/ #向多个服务注册中心注册服务
+  instance:
+    instance-id: publish-provider-8100 #修改eureka Status描述信息
+    prefer-ip-address: true #显示服务ip，默认false显示域名
+
+#配置服务信息
+info:
+  app.name: publish-provider
+  company.name: jenson personal

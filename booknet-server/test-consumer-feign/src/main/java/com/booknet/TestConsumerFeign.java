@@ -3,6 +3,7 @@ package com.booknet;
 import com.booknet.myrule.MyRibbonRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description
  */
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableEurekaClient
 @EnableFeignClients(basePackages = {"com.booknet"})
 //@ComponentScan("com.booknet")

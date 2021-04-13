@@ -9,7 +9,7 @@
     </insert>
 
     <select id="queryById" resultType="Test" parameterType="Integer">
-        select * from test where id = #{id}
+        select * from books where id = #{id}
     </select>
 
     <select id="queryAll" resultType="Test">

@@ -1,6 +1,5 @@
 server:
   port: 7001 # hostname:7001/ 访问eureka主页
-
 #eureka配置
 eureka:
   instance:
@@ -10,4 +9,4 @@ eureka:
     fetch-registry: false  #false表示自己为注册中心
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #服务注册地址
-#      defaultZone: http://localhost:7002/eureka/
+      #      defaultZone: http://localhost:7002/eureka/

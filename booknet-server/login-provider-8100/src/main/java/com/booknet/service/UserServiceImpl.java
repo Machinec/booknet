@@ -62,31 +62,25 @@ public class UserServiceImpl implements UserService {
         JSONObject jsonObject = JSONObject.parseObject(responseEntity.getBody());
         String openid = (String) jsonObject.getString("openid");
         String sessionKey = (String) jsonObject.getString("session_key");
-
         // 当请求失败时，openid == session_key == null
         if (openid == null || sessionKey == null){
             return null;
         }
-
         // 判断是否第一次登录
         User exist = userDao.selectByOpenid(openid);
         if (exist == null || exist.getStatus() == 0){
             user.setStatus(1).setField("").setOpenid(openid);
             userDao.insertUser(user);
         }
-
         // 保存<user_id, userInfo>至redis,
         String user_id = UUID.randomUUID().toString();
-//        System.out.println("UserServiceImpl sessionKeyId " + user_id);
         HashMap<String, String> userInfo = new HashMap<>();
         userInfo.put("session_key", sessionKey);
         userInfo.put("openid", openid);
         redisTemplate.opsForHash().putAll(user_id, userInfo);
         redisTemplate.expire(user_id, EXPIRE_TIME, TimeUnit.SECONDS); // 设置redis时间
-
         // 生成返回token
         String token = JWTUtil.createToken(SECRET_KEY, user_id);
-//        System.out.println("UserServiceImpl token " + token);
         return token;
     }
 
