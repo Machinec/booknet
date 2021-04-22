@@ -42,7 +42,8 @@ public class PublishController {
     @PostMapping("/publish/ask/add")
     @HystrixCommand(fallbackMethod = "publishException")
     public ControllerReturn addAsk(@RequestBody HashMap data, HttpServletRequest request){
-        String user_id = JWTUtil.getUserId(request);
+//        String user_id = JWTUtil.getUserId(request);
+        String user_id = (String) data.get("user_id");
         Map<String, String> userMap = redisTemplate.opsForHash().entries(user_id);
         Ask ask = JSON.parseObject(JSON.toJSONString(data.get("ask")), Ask.class);
         ask.setOpenid(userMap.get("openid"));
@@ -52,10 +53,14 @@ public class PublishController {
     @PostMapping("/publish/book/add")
     @HystrixCommand(fallbackMethod = "publishException")
     public ControllerReturn addBook(@RequestBody HashMap data, HttpServletRequest request){
-        String user_id = JWTUtil.getUserId(request);
+//        String user_id = JWTUtil.getUserId(request);
+        String user_id = (String) data.get("user_id");
+        System.out.println("user_id => " + user_id);
         Map<String, String> userMap = redisTemplate.opsForHash().entries(user_id);
+        System.out.println("userMap => " + userMap.toString());
         Book book = JSON.parseObject(JSON.toJSONString(data.get("book")), Book.class);
         book.setOpenid(userMap.get("openid"));
+        System.out.println("book => " + book.toString());
         return publishService.addBook(book);
     }
 

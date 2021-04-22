@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 
 /**
@@ -37,12 +38,12 @@ public class UserConsumerController {
     }
 
     @PostMapping("/user/ask/list")
-    public ControllerReturn askList(){
-        return service.askList();
+    public ControllerReturn askList(@RequestBody HashMap data){
+        return service.askList(data);
     }
 
     @PostMapping("/user/book/list")
-    public ControllerReturn bookList(){
-        return service.bookList();
+    public ControllerReturn bookList(@RequestBody HashMap data){
+        return service.bookList(data);
     }
 }

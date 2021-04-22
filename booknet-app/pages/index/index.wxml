@@ -15,8 +15,8 @@
   <van-card
     price="{{item.price}}"
     desc="{{item.desc}}"
-    title="{{item.title}}"
-    thumb="{{item.imageURL}}"
+    title="{{item.book}}"
+    thumb="{{item.image}}"
   />  
 </view>
 

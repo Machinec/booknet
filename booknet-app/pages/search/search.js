@@ -9,13 +9,13 @@ Page({
       {
         price:'5.00',
         desc:"《时间简史》是英国物理学家斯蒂芬·威廉·霍金创作的科普著作，首次出版于1988年。全书共十二章，讲述了关于宇宙本性的最前沿知识。", 
-        title:"平凡的世界",
+        title:"时间简史",
         imageURL: 'https://bkimg.cdn.bcebos.com/pic/0bd162d9f2d3572c2b694f428d13632763d0c3a1?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U5Mg==,g_7,xp_5,yp_5/format,f_auto',
       },
       {
         price:"6.00",
         desc:"《时间简史》是英国物理学家斯蒂芬·威廉·霍金创作的科普著作，首次出版于1988年。全书共十二章，讲述了关于宇宙本性的最前沿知识。",
-        title:"平凡的世界",
+        title:"时间简史",
         imageURL: 'https://bkimg.cdn.bcebos.com/pic/0bd162d9f2d3572c2b694f428d13632763d0c3a1?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U5Mg==,g_7,xp_5,yp_5/format,f_auto',
       },
     ],

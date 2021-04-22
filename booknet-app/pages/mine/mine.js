@@ -6,7 +6,8 @@ Page({
    */
   data: {
     userInfo: {
-      avatar_url: "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoaWS5nSxdN3X9rTMclPXYK3jgrGl2ae9PaibLXWpstXw7Siaia1BvZ5Ix2IibaDdyUkVOficyh2cZFPOw/132"
+      name: 'CC啊',
+      avatar: "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoaWS5nSxdN3X9rTMclPXYK3jgrGl2ae9PaibLXWpstXw7Siaia1BvZ5Ix2IibaDdyUkVOficyh2cZFPOw/132"
     }
   },
 
@@ -34,6 +35,11 @@ Page({
         active: 3
       })
     }
+    let app = getApp()
+    this.setData({
+      name: app.globalData.userInfo.nickName,
+      avatar: app.globalData.userInfo.avatarUrl
+    })
   },
 
   /**

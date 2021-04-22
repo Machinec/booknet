@@ -52,16 +52,18 @@ public class UserController {
 
     @PostMapping("/user/ask/list")
     @HystrixCommand(fallbackMethod = "userException")
-    public ControllerReturn askList(HttpServletRequest request){
-        String user_id = JWTUtil.getUserId(request);
+    public ControllerReturn askList(@RequestBody HashMap data){
+//        String user_id = JWTUtil.getUserId(request);
+        String user_id = (String) data.get("user_id");
         Map<String, String> userMap = redisTemplate.opsForHash().entries(user_id);
         return userService.askList(userMap.get("openid"));
     }
 
     @PostMapping("/user/book/list")
     @HystrixCommand(fallbackMethod = "userException")
-    public ControllerReturn bookList(HttpServletRequest request){
-        String user_id = JWTUtil.getUserId(request);
+    public ControllerReturn bookList(@RequestBody HashMap data){
+//        String user_id = JWTUtil.getUserId(request);
+        String user_id = (String) data.get("user_id");
         Map<String, String> userMap = redisTemplate.opsForHash().entries(user_id);
         return userService.bookList(userMap.get("openid"));
     }
@@ -70,7 +72,7 @@ public class UserController {
         return new ControllerReturn().setCode(500).setMessage("访问服务熔断").setData(data);
     }
 
-    public ControllerReturn userException(HttpServletRequest request){
-        return new ControllerReturn().setCode(500).setMessage(request.getRequestURL() + "访问服务熔断");
+    public ControllerReturn userException(HashMap data){
+        return new ControllerReturn().setCode(500).setMessage("访问服务熔断");
     }
 }

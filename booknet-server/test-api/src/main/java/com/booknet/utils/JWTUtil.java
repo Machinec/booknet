@@ -18,7 +18,7 @@ public class JWTUtil {
     public static final long EXPIRE_TIME = 60*60*24*7;//7天
 
     // 请求头存放token字段
-    private static final String REQUEST_AUTH_HEADER="Authorization";
+    private static final String REQUEST_AUTH_HEADER="myAuthorization";
 
     /*
      * @Author zichang

@@ -9,12 +9,12 @@
       fit="cover"
       width="5rem"
       height="5rem"
-      src="{{userInfo.avatar_url}}"
+      src="{{userInfo.avatar}}"
       />
     </van-col>
     <van-col span="7">
       <view class='info'>
-        <view class='info-name'>河边的CC啊</view>
+        <view class='info-name'>{{userInfo.name}}</view>
         <view class='info-area'>华南师范大学</view>
       </view>
     </van-col>

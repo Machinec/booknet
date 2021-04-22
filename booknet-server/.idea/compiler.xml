@@ -10,9 +10,9 @@
         <module name="publish-provider-8300" />
         <module name="test-provider-8002" />
         <module name="test-provider-8001" />
+        <module name="booknet-consumer-hystrix-dashboard" />
         <module name="test-api" />
         <module name="booknet-config-server-3344" />
-        <module name="booknet-eureka-7002" />
         <module name="booknet-consumer-9001" />
         <module name="test-consumer" />
         <module name="user-provider" />
@@ -21,7 +21,7 @@
         <module name="login-provider-8100" />
         <module name="booknet-zuul-9527" />
         <module name="test-provider-hystrix-8001" />
-        <module name="booknet-consumer-hystrix-dashboard" />
+        <module name="booknet-eureka-7002" />
         <module name="booknet-eureka-7001" />
         <module name="test-consumer-feign" />
         <module name="user-provider-8400" />

@@ -21,6 +21,8 @@ zuul:
   #访问示例：http://www.booknet.com/app/user/login
   #prefix: /booknet  #设置公共的前缀 http://www.booknet:9527/公共前缀/自定义path/controller mapping
   #test访问：http://www.booknet.com:9527/booknet/mytest/test/get/2
+  #敏感头信息 默认为：Authorization,Cookie,Set-Cookie，转发请求时不转发敏感头信息
+  sensitive-headers:
 #  ignored-services: test-provider #不能再通过该服务名访问
 
 # token验证过滤器白名单
@@ -30,4 +32,5 @@ filter-ignore-url:
     - http://www.booknet.com/app/search/
     - http://www.booknet.com/app/user/test
     - http://www.booknet.com/app/publish/test
+
 

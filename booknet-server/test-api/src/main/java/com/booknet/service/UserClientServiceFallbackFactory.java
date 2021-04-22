@@ -3,6 +3,7 @@ package com.booknet.service;
 import com.booknet.utils.ControllerReturn;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 
@@ -32,12 +33,12 @@ public class UserClientServiceFallbackFactory implements FallbackFactory {
             }
 
             @Override
-            public ControllerReturn askList() {
+            public ControllerReturn askList(HashMap data) {
                 return new ControllerReturn().setCode(500).setMessage("服务暂时无法访问，请稍后重试");
             }
 
             @Override
-            public ControllerReturn bookList() {
+            public ControllerReturn bookList(HashMap data) {
                 return new ControllerReturn().setCode(500).setMessage("服务暂时无法访问，请稍后重试");
             }
         };

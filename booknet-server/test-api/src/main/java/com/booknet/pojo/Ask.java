@@ -1,5 +1,6 @@
 package com.booknet.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -18,6 +19,8 @@ public class Ask {
     private int id;
     private String openid;
     private String book;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date time;
     private String desc;
     private String detail;

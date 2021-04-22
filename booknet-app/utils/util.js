@@ -23,15 +23,15 @@ const formatNumber = n => {
 // const x = (x, y) => x * y;
 
 // 封装wx.request,携带token请求
-const wxRequestToken = (url,data,token) => {
+const post = (url,data,token) => {
   let promise = new Promise(function(resolve,reject){
     wx.request({
       method: 'POST',
-      url: base_url+url,
+      url: url,
       data:data,  
       header:{
         'content-type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        'myAuthorization': 'Bearer ' + token
       },
       success(res){
         if(res.data.code == 200 || typeof(res.data.code) == undefined || res.data.code == null){
@@ -181,12 +181,39 @@ const initLogin = () =>{
 
 }
 
+const get = (url) => {
+  let promise = new Promise(function(resolve,reject){   
+    wx.request({
+      url: url,
+      method: 'GET',
+      success(res){
+        resolve(res)
+      },
+      fail(err){
+        reject(err)
+      }
+    })
+  })
+  return promise
+}
+
+// 生成uuid
+const guid = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0,
+          v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+  });
+}
+
 
 module.exports = {
   formatTime,
-  wxRequestToken,
   wxRequest,
   wxGetStorage,
   login,
-  initLogin
+  initLogin,
+  get,
+  post,
+  guid
 }

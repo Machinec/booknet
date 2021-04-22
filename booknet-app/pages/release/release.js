@@ -1,5 +1,7 @@
 // pages/release/release.js
 import Dialog from '../../lib/vant-weapp/dist/dialog/dialog';
+const utils = require("../../utils/util")
+
 Page({
 
   /**
@@ -180,7 +182,7 @@ Page({
   // 求书贴上传书籍图片，文件上传完毕后会触发after-read回调函数，获取到对应的文件的临时地址，然后再使用wx.uploadFile将图片上传到远程服务器上
   afterRead: function(event){
     const { file } = event.detail;
-    // console.log(file)
+    // console.log(event.detail.file)
 
     const { images = [] } = this.data;
     images.push({ ...file, url: file.url });
@@ -198,6 +200,14 @@ Page({
     //     this.setData({ fileList });
     //   },
     // });
+    // let temp_arr = file.url.split('/')
+    // let image_name = temp_arr[temp_arr.length - 1]
+    // try {
+    //   let result = client.put(image_name, file)
+    //   console.log(result)
+    // }catch(e){
+    //   console.log(e)
+    // }
   },
   
   // 求书贴删除选中图片
@@ -211,37 +221,161 @@ Page({
   // 书籍转让贴概要内容：如果desc字符数大于76则仅截取前73个字符加上后缀“...”
   bookPubSubmit: function(){
     console.log(this.data.book_pub)
+    /**
+     *     book_pub:{
+      name:'',
+      price: 0,
+      desc:'',
+      contact:'' //联系方式
+    },
+     */
     // 1.校验表单内容合法性
+    let book = this.data.book_pub
+    if(book.name == '' || typeof book.name == 'undefined'){
+      Dialog.alert({
+        message:'请填写书名'
+      })
+      return
+    }
+    if(book.desc == '' || typeof book.desc == 'undefined'){
+      Dialog.alert({
+        message:'请填写内容'
+      })
+      return
+    }
+    if(book.contact == '' || typeof book.contact == 'undefined'){
+      Dialog.alert({
+        message:'请填写联系方式'
+      })
+      return
+    }
+    if(this.data.images.length == 0){
+      Dialog.alert({
+        message:'请上传图片'
+      })
+      return
+    }
+    book.image = this.data.images[0].url
+    let temp_desc = book.desc
+    book.detail = temp_desc
+    book.desc = temp_desc.substring(0, 73)
+    book.book = book.name
+    let request_data = {book: book}
+    
     // 2.调用后台接口，上传内容
-    // 3.通知发布成功
-    Dialog.alert({
-      message:'发布成功'
+    let instance = this
+    wx.getStorage({
+      key: 'token',
+      success: (res) =>{
+        // token 消失
+        if (res.data == '' || typeof res.data == 'undefined'){
+          utils.login()
+          return
+        }
+        let promise = utils.post('http://www.booknet.com/app/publish/book/add', request_data, res.data)
+        promise.then((value) => {
+          console.log(value)
+          // 后台校验token失效
+          if(value.data.code == 9527){
+            utils.login()
+            return
+          }
+          // 3.通知发布成功
+          Dialog.alert({
+            message:'发布成功'
+          })
+          // 4.发布成功后重置表单内容
+          instance.setData({
+            'book_pub.name':'',
+            'book_pub.price':0,
+            'book_pub.desc': '',
+            'book_pub.contact':'',
+            images:[]
+          })
+        })
+      }
     })
-    // 4.发布成功后重置表单内容
-    this.setData({
-      'book_pub.name':'',
-      'book_pub.price':0,
-      'book_pub.desc': '',
-      'book_pub.contact':'',
-      images:[]
-    })
+    // // 3.通知发布成功
+    // Dialog.alert({
+    //   message:'发布成功'
+    // })
+    // // 4.发布成功后重置表单内容
+    // this.setData({
+    //   'book_pub.name':'',
+    //   'book_pub.price':0,
+    //   'book_pub.desc': '',
+    //   'book_pub.contact':'',
+    //   images:[]
+    // })
   },
 
   // 求书贴发布按钮
   // 求书贴概要内容：如果desc字符数大于67则仅截取前64个字符加上后缀“...”
   askPubSubmit: function(){
     console.log(this.data.ask_pub)
+    /**
+     *     ask_pub:{
+      name:'',
+      desc:'',
+      contact:'' //联系方式
+    },
+     */
+    let ask = this.data.ask_pub
     // 1.校验表单内容合法性
+    if(ask.name == '' || typeof ask.name == 'undefined'){
+      Dialog.alert({
+        message:'请填写书名'
+      })
+      return
+    }
+    if(ask.desc == '' || typeof ask.desc == 'undefined'){
+      Dialog.alert({
+        message:'请填写内容'
+      })
+      return
+    }
+    if(ask.contact == '' || typeof ask.contact == 'undefined'){
+      Dialog.alert({
+        message:'请填写联系方式'
+      })
+      return
+    }
+    let temp_detail = ask.desc
+    ask.desc = temp_detail.substring(0,64)
+    ask.detail = temp_detail
+    ask.book = ask.name
+    let request_data = {ask: ask}
     // 2.调用后台接口，上传内容
-    // 3.通知发布成功
-    Dialog.alert({
-      message:'发布成功'
+    let instance = this
+    wx.getStorage({
+      key: 'token',
+      success: (res) =>{
+        // token 消失
+        if (res.data == '' || typeof res.data == 'undefined'){
+          utils.login()
+          return
+        }
+        let promise = utils.post('http://www.booknet.com/app/publish/ask/add', request_data, res.data)
+        promise.then((value) => {
+          console.log(value)
+          // 后台校验token失效
+          if(value.data.code == 9527){
+            utils.login()
+            return
+          }
+          // 3.通知发布成功
+          Dialog.alert({
+            message:'发布成功'
+          })
+          // 4.发布成功后重置表单内容
+          instance.setData({
+            'ask_pub.name':'',
+            'ask_pub.desc':'',
+            'ask_pub.contact':'',
+          })
+        })
+      }
     })
-    // 4.发布成功后重置表单内容
-    this.setData({
-      'ask_pub.name':'',
-      'ask_pub.desc':'',
-      'ask_pub.contact':'',
-    })
+
   }
 })

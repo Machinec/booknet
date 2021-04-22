@@ -26,8 +26,8 @@ public interface UserClientService {
     public ControllerReturn delBook(@RequestBody HashMap data);
 
     @PostMapping("/user/ask/list")
-    public ControllerReturn askList();
+    public ControllerReturn askList(@RequestBody HashMap data);
 
     @PostMapping("/user/book/list")
-    public ControllerReturn bookList();
+    public ControllerReturn bookList(@RequestBody HashMap data);
 }

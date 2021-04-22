@@ -1,15 +1,27 @@
 package com.booknet.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.booknet.config.FilterIgnoreURL;
 import com.booknet.utils.JWTUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import com.netflix.zuul.http.HttpServletRequestWrapper;
+import com.netflix.zuul.http.ServletInputStreamWrapper;
+import org.springframework.util.StreamUtils;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +32,7 @@ import java.util.Map;
 public class BooknetFilter extends ZuulFilter {
 
     // 请求头存放token字段
-    private static final String REQUEST_AUTH_HEADER="Authorization";
+    private static final String REQUEST_AUTH_HEADER="myAuthorization";
 
     // token 密钥
     private static final String SECRET_KEY = "5371d568a45e5ab1s123c38e0932aef25317139b";
@@ -84,7 +96,50 @@ public class BooknetFilter extends ZuulFilter {
 
             context.setResponseBody(JSON.toJSONString(responseMap));
         }
+//        System.out.println(token);
+//        context.addZuulRequestHeader(REQUEST_AUTH_HEADER, request.getHeader(REQUEST_AUTH_HEADER));
+        // 将token的redis key取出，存入请求参数列表
+        String user_id = JWTUtil.getUserId(request);
+        RequestContext ctx = RequestContext.getCurrentContext();
+        try {
+            // 编码格式
+            String charset = ctx.getRequest().getCharacterEncoding();
+            InputStream in = (InputStream) ctx.get("requestEntity");
+            if (null == in) {
+                in = ctx.getRequest().getInputStream();
+            }
+            String requestEntityStr = StreamUtils.copyToString(in, Charset.forName(charset));
+            requestEntityStr = URLDecoder.decode(requestEntityStr, charset);
+            JSONObject requestEntityJson = JSONObject.parseObject(requestEntityStr);
+            System.out.println("zuul filter json => " + requestEntityJson.toString());
+            // 新增参数
+            requestEntityJson.put("user_id", user_id);
+            byte[] requestEntityBytes = requestEntityJson.toJSONString().getBytes(charset);
+            ctx.setRequest(new HttpServletRequestWrapper(ctx.getRequest()) {
+                @Override
+                public ServletInputStream getInputStream() throws IOException {
+                    return new ServletInputStreamWrapper(requestEntityBytes);
+                }
 
+                @Override
+                public int getContentLength() {
+                    return requestEntityBytes.length;
+                }
+
+                @Override
+                public long getContentLengthLong() {
+                    return requestEntityBytes.length;
+                }
+            });
+        } catch (Exception e) {
+            // 用来给后面的 Filter 标识，是否继续执行
+//            ctx.set(SessionContants.LOGIC_IS_SUCCESS, false);
+            // 返回信息
+//            ctx.setResponseBody(String.format(SessionContants.ERROR_RESPONSE_BODY, "修改请求体出错"));
+            // 对该请求禁止路由，禁止访问下游服务
+//            ctx.setSendZuulResponse(false);
+            e.printStackTrace();
+        }
         return null;
     }
 }
