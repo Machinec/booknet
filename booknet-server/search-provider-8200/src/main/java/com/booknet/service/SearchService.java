@@ -22,4 +22,8 @@ public interface SearchService {
 
 
     public ControllerReturn getBookDetail(int id);
+
+    public ControllerReturn findBook(String key);
+
+    public ControllerReturn findAsk(String key);
 }

@@ -6,8 +6,12 @@
   <van-card
     price="{{item.price}}"
     desc="{{item.desc}}"
-    title="{{item.title}}"
-    thumb="{{item.imageURL}}"
+    title="{{item.book}}"
+    thumb="{{item.image}}"
   />  
+</view>
+
+<view wx:if="{{list_length == 0}}"> 
+    <text>搜索不到相关内容</text>
 </view>
 

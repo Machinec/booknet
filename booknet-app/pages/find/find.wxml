@@ -6,13 +6,13 @@
 <van-row >
   <!-- 用户头像 -->
   <van-col offset="1">
-    <van-image style="vertical-align:middle" round width="2.5rem" height="2.5rem" src="{{item.avatarUrl}}" />
+    <van-image style="vertical-align:middle" round width="2.5rem" height="2.5rem" src="{{item.avatar}}" />
   </van-col>
 
   <van-col offset="1">
     <!-- 用户名 -->
     <van-row>
-      <van-col><text style="font-size:12px; color:#000">{{item.user}}</text></van-col>
+      <van-col><text style="font-size:12px; color:#000">{{item.name}}</text></van-col>
     </van-row>
     <!-- 帖子相关书名 -->
     <van-row>
@@ -42,4 +42,9 @@
 </van-row>
 
 <view style="height:8px"></view>
+</view>
+
+
+<view wx:if="{{list_length == 0}}"> 
+    <text>搜索不到相关内容</text>
 </view>

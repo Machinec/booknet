@@ -49,12 +49,30 @@ public class SearchController {
         return searchService.getBookDetail(id);
     }
 
+    @GetMapping("/search/find/book/{key}")
+    @HystrixCommand(fallbackMethod = "findException")
+    public ControllerReturn findBook(@PathVariable("key") String key){
+//        System.out.println("key = " + key);
+        return searchService.findBook(key);
+    }
+
+    @GetMapping("/search/find/ask/{key}")
+    @HystrixCommand(fallbackMethod = "findException")
+    public ControllerReturn findAsk(@PathVariable("key") String key){
+//        System.out.println("key = " + key);
+        return searchService.findAsk(key);
+    }
+
     public ControllerReturn searchException(int param){
         return new ControllerReturn().setCode(500).setMessage("访问服务熔断").setData(param);
     }
 
     public ControllerReturn searchTestException(){
         return new ControllerReturn().setCode(500).setMessage("访问服务熔断");
+    }
+
+    public ControllerReturn findException(String param){
+        return new ControllerReturn().setCode(500).setMessage("访问服务熔断").setData(param);
     }
 
 }

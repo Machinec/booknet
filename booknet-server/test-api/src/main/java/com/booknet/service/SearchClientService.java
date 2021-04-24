@@ -27,4 +27,10 @@ public interface SearchClientService {
 
     @GetMapping("/search/book/get/{id}")
     public ControllerReturn getBookDetail(@PathVariable("id") int id);
+
+    @GetMapping("/search/find/book/{key}")
+    public ControllerReturn findBook(@PathVariable("key") String key);
+
+    @GetMapping("/search/find/ask/{key}")
+    public ControllerReturn findAsk(@PathVariable("key") String key);
 }

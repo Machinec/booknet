@@ -43,4 +43,14 @@ public class SearchConsumerController {
     public ControllerReturn getBookDetail(@PathVariable("id") int id){
         return service.getBookDetail(id);
     }
+
+    @GetMapping("/search/find/book/{key}")
+    public ControllerReturn findBook(@PathVariable("key") String key){
+        return service.findBook(key);
+    }
+
+    @GetMapping("/search/find/ask/{key}")
+    public ControllerReturn findAsk(@PathVariable("key") String key){
+        return service.findAsk(key);
+    }
 }

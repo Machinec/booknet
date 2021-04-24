@@ -1,4 +1,5 @@
 // pages/find/find.js
+const utils = require("../../utils/util")
 Page({
 
   /**
@@ -8,28 +9,30 @@ Page({
 
     ask_list:[
       {
-        user:"河边的CC啊",
+        name:"河边的CC啊",
         book:"活着",
         desc:"《活着》讲述一个人一生的故事，这是一个历尽世间沧桑和磨难老人的人生感言，是一幕演绎人生苦难经历的戏剧。",
         time:"2021-01-01",
-        avatarUrl:"https://tse1-mm.cn.bing.net/th/id/OET.b0835fdb04124319b21ff2c797de08db?w=272&h=272&c=7&rs=1&o=5&dpr=1.56&pid=1.9"
-      },
-      {
-        user:"jesbru",
-        book:"活着",
-        desc:"《《活着》讲述一个人一生的故事，这是一个历尽世间沧桑和磨难老人的人生感言，是一幕演绎人生苦难经历的戏剧。",
-        time:"2021-01-01",
-        avatarUrl:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoaWS5nSxdN3X9rTMclPXYK3jgrGl2ae9PaibLXWpstXw7Siaia1BvZ5Ix2IibaDdyUkVOficyh2cZFPOw/132"
+        avatar:"https://tse1-mm.cn.bing.net/th/id/OET.b0835fdb04124319b21ff2c797de08db?w=272&h=272&c=7&rs=1&o=5&dpr=1.56&pid=1.9"
       }
   
-    ]
+    ],
+    list_length: 0
   },
 
     // 选中求书贴跳转事件
     selectAsk: function(event){
+      // let index = event.currentTarget.dataset.index;
+      // wx.navigateTo({
+      //   url: '/pages/content/content?index='+index,
+      // })
+
       let index = event.currentTarget.dataset.index;
+      let ask_id = this.data.ask_list[index].id
+      let ask_name = this.data.ask_list[index].name
+      let ask_avatar = this.data.ask_list[index].avatar
       wx.navigateTo({
-        url: '/pages/content/content?index='+index,
+        url: '/pages/content/content?index='+ask_id + '&name=' + ask_name + '&avatar=' + ask_avatar
       })
     },
 
@@ -38,6 +41,16 @@ Page({
    */
   onLoad: function (options) {
     console.log('书贴搜索参数=> ' + options.detail)
+    let instance = this
+    let promise = utils.get('http://www.booknet.com/app/search/find/ask/' + options.detail)
+    promise.then((value) => {
+      if(value.data.code == 200){
+        instance.setData({
+          ask_list: value.data.data,
+          list_length: value.data.data.length
+        })
+      }
+    })
   },
 
   /**

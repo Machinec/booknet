@@ -39,6 +39,16 @@ public class SearchClientServiceFallbackFactory implements FallbackFactory {
             public ControllerReturn getBookDetail(int id) {
                 return new ControllerReturn().setCode(500).setMessage("服务暂时无法访问，请稍后重试");
             }
+
+            @Override
+            public ControllerReturn findBook(String key) {
+                return new ControllerReturn().setCode(500).setMessage("服务暂时无法访问，请稍后重试");
+            }
+
+            @Override
+            public ControllerReturn findAsk(String key) {
+                return new ControllerReturn().setCode(500).setMessage("服务暂时无法访问，请稍后重试");
+            }
         };
     }
 }

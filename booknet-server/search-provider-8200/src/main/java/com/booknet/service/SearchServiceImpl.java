@@ -59,4 +59,14 @@ public class SearchServiceImpl implements SearchService {
         Book book = dao.getBookDetail(id);
         return new ControllerReturn().setCode(200).setMessage("OK").setData(book);
     }
+
+    @Override
+    public ControllerReturn findBook(String key) {
+        return new ControllerReturn().setCode(200).setMessage("OK").setData(dao.findBook(key));
+    }
+
+    @Override
+    public ControllerReturn findAsk(String key) {
+        return new ControllerReturn().setCode(200).setMessage("OK").setData(dao.findAsk(key));
+    }
 }
